@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // different tab/page different session
+    // available only current browser session tab , if tab close sesssion lost
+    // sessionStorage.getItem("name");
+    // sessionStorage.clear();
+    // sessionStorage.removeItem("name");
+    // sessionStorage.setItem("name", "uday");
+    // sessionStorage.removeItem("name");
+
+    window.onstorage = (e) => {
+        alert("Changed");
+        console.log(e);
+    }
+</script>
+
+<body style="text-align: center; color: white; background-color: black;">
+    <h1>Session Storage</h1>
+</body>
+
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Security Check | Monastery360</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 0;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .blob1 {
+            background: #16a34a;
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            left: -100px;
+        }
+
+        .blob2 {
+            background: #3b82f6;
+            width: 300px;
+            height: 300px;
+            bottom: -50px;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(50px, 50px) scale(1.1);
+            }
+        }
+
+        .card {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .logo i {
+            font-size: 48px;
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        /* Custom Captcha */
+        .captcha-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .captcha-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #16a34a;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox.checked {
+            background: #16a34a;
+        }
+
+        .checkbox.checked i {
+            display: block;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .checkbox i {
+            display: none;
+        }
+
+        .captcha-question {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .captcha-challenge {
+            display: none;
+            margin-top: 16px;
+        }
+
+        .captcha-challenge.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .captcha-text {
+            background: #1e293b;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 24px;
+            letter-spacing: 8px;
+            font-weight: 700;
+            user-select: none;
+            margin-bottom: 12px;
+            text-decoration: line-through;
+            text-decoration-color: rgba(255, 255, 255, 0.2);
+            font-family: 'Courier New', monospace;
+        }
+
+        .captcha-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .captcha-input:focus {
+            border-color: #16a34a;
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+        }
+
+        .refresh-btn {
+            margin-top: 8px;
+            background: none;
+            border: none;
+            color: #60a5fa;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(22, 163, 74, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .error {
+            color: #f87171;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .success {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success i {
+            font-size: 64px;
+            color: #22c55e;
+            margin-bottom: 16px;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            display: none;
+            z-index: 100;
+            animation: slideUp 0.5s ease;
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        .cookie-text {
+            color: #e2e8f0;
+            font-size: 14px;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .cookie-text a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cookie {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-accept {
+            background: #16a34a;
+            color: #fff;
+        }
+
+        .btn-decline {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <div class="card" id="captchaCard">
+        <div class="logo">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h1>Security Check</h1>
+        <p class="subtitle">Please verify you're human to continue to Monastery360</p>
+
+        <div class="captcha-box">
+            <div class="captcha-header" onclick="toggleCaptcha()">
+                <div class="checkbox" id="checkbox">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div class="captcha-question">I'm not a robot</div>
+            </div>
+
+            <div class="captcha-challenge" id="captchaChallenge">
+                <div class="captcha-text" id="captchaText">AB7X9K</div>
+                <input type="text" class="captcha-input" id="captchaInput" placeholder="Enter the text above" />
+                <button class="refresh-btn" onclick="generateCaptcha()">
+                    <i class="fa-solid fa-rotate-right"></i> Get new code
+                </button>
+                <div class="error" id="errorMsg">Incorrect code. Please try again.</div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" id="verifyBtn" onclick="verifyCaptcha()" disabled>
+            Verify & Continue
+        </button>
+
+        <div class="success" id="successMsg">
+            <i class="fa-solid fa-circle-check"></i>
+            <h2>Verified Successfully!</h2>
+            <p class="subtitle">Redirecting you to Monastery360...</p>
+        </div>
+    </div>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-text">
+            We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.
+            By clicking "Accept All", you consent to our use of cookies. <a href="/privacy">Privacy Policy</a>
+        </div>
+        <div class="cookie-actions">
+            <button class="btn-cookie btn-accept" onclick="acceptCookies()">Accept All</button>
+            <button class="btn-cookie btn-decline" onclick="declineCookies()">Decline</button>
+        </div>
+    </div>
+
+    <script>
+        let currentCaptcha = '';
+        let isChecked = false;
+
+        // Generate random captcha
+        function generateCaptcha() {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            currentCaptcha = '';
+            for (let i = 0; i < 6; i++) {
+                currentCaptcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById('captchaText').textContent = currentCaptcha;
+            document.getElementById('captchaInput').value = '';
+            document.getElementById('errorMsg').style.display = 'none';
+        }
+
+        // Toggle checkbox
+        function toggleCaptcha() {
+            isChecked = !isChecked;
+            const checkbox = document.getElementById('checkbox');
+            const challenge = document.getElementById('captchaChallenge');
+            const verifyBtn = document.getElementById('verifyBtn');
+
+            if (isChecked) {
+                checkbox.classList.add('checked');
+                challenge.classList.add('active');
+                verifyBtn.disabled = false;
+                generateCaptcha();
+            } else {
+                checkbox.classList.remove('checked');
+                challenge.classList.remove('active');
+                verifyBtn.disabled = true;
+            }
+        }
+
+        // Verify captcha
+        function verifyCaptcha() {
+            const input = document.getElementById('captchaInput').value.toUpperCase();
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (input === currentCaptcha) {
+                document.getElementById('captchaCard').innerHTML = document.getElementById('successMsg').outerHTML;
+                document.getElementById('successMsg').style.display = 'block';
+
+                // Set verified cookie for 1 hour
+                document.cookie = "verified=true; max-age=3600; path=/";
+
+                // Redirect after 2s - change this URL
+                setTimeout(() => {
+                    window.location.href = '/'; // Change to your homepage
+                }, 2000);
+            } else {
+                errorMsg.style.display = 'block';
+                generateCaptcha();
+                // Shake animation
+                document.getElementById('captchaChallenge').style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    document.getElementById('captchaChallenge').style.animation = '';
+                }, 500);
+            }
+        }
+
+        // Cookie functions
+        function showCookieBanner() {
+            if (!getCookie('cookieConsent')) {
+                setTimeout(() => {
+                    document.getElementById('cookieBanner').classList.add('show');
+                }, 1000);
+            }
+        }
+
+        function acceptCookies() {
+            document.cookie = "cookieConsent=accepted; max-age=31536000; path=/"; // 1 year
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        function declineCookies() {
+            document.cookie = "cookieConsent=declined; max-age=31536000; path=/";
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+      }
+    `;
+        document.head.appendChild(style);
+
+        // Init
+        window.onload = () => {
+            generateCaptcha();
+            showCookieBanner();
+
+            // Enter key submits
+            document.getElementById('captchaInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') verifyCaptcha();
+            });
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        p {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .g-recaptcha {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        /* Cookie Consent Banner Styles */
+        .cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Security Check</h1>
+        <p>Please solve the captcha and check the "I am not a robot" box.</p>
+
+        <form id="myForm" onsubmit="return verifyCaptcha()" action="your-php-backend.php" method="POST">
+            <div class="g-recaptcha" data-sitekey="6Lcy2-EsAAAAAIPMSO0fD9j2LTw88bb5NnFixwO2"></div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <span>🍪 We use cookies to ensure you get the best experience on our website.</span>
+        <button type="button" onclick="acceptCookies()">Got it!</button>
+    </div>
+
+    <script>
+        function verifyCaptcha() {
+            var response = grecaptcha.getResponse();
+            if (response.length == 0) {
+                alert("Please verify that you are not a robot.");
+                return false;
+            } else {
+                alert("Captcha verified successfully!");
+                return true;
+            }
+        }
+
+        function acceptCookies() {
+            document.getElementById('cookieBanner').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function checkCookie() {
+
+            var cdata = document.cookie
+            if (cdata == "") {
+                alert("No cookie found, so welcome at first time");
+                document.cookie = "username=John Doe";
+            }
+            else {
+                alert("Cookie found, so welcome back");
+            }
+
+        }
+        }
+    </script>
+</head>
+
+<body onload="checkCookie();">
+    <h1 style="text-align: center;">Cookie Demo</h1>
+
+</body>
+
+</html>
