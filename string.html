@@ -5,6 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>String_Javascript</title>
+    <script>
+        const name = "Uday"
+        const repoCount = 50;
+
+        // console.log(name + " " + repoCount + " value")
+
+        // console.log(`  Hello my name is ${name} and my repo count is ${repoCount}`);
+
+        const gameName = new String('Uday_Roy');
+        // console.log(gameName[0]);
+        // console.log(gameName.__proto__);
+
+        //console.log(gameName.length);
+        //console.log(gameName.toUpperCase())
+        // console.log(gameName.charAt('U'));
+        // console.log(gameName.charAt(2));
+        // console.log(gameName.indexOf('a'));
+
+        const newString = gameName.substring(0, 4);
+        //console.log(newString);
+
+        const anotherString = gameName.slice(0, 5)
+        const anotherString1 = gameName.slice(-4, 2)
+        // console.log(anotherString)
+        //console.log(anotherString1)
+
+        const newStringTwo = "   uday   "
+        console.log(newStringTwo)
+        console.log(newStringTwo.trim())
+
+        const url = "https//udayroy.in/contact%20gmail"
+        console.log(url)
+        console.log(url.replace('%20', '_'))
+        console.log(url.includes('uday'))
+        console.log(url.includes('sundar'))
+
+        console.log(gameName.split('_'))
+        console.log(url.endsWith('i'))
+        console.log(url.endsWith('l'))
+
+        console.log(url.fixed('1111'))
+        console.log(url.console)
+        console.log(url.italics)
+        console.log(url.concat('hellog'))
+
+
+
+
+
+
+    </script>
 </head>
 
 <body>

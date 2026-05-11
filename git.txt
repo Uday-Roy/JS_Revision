@@ -1,0 +1,311 @@
+learn git upload file from vs code to github
+
+
+##...Create a new repository from command line 
+echo "# JAVA_PRACTICE" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Uday-Roy/JAVA_PRACTICE.git
+git push -u origin main
+
+## ***...for furture code fix and edit upload
+git add .
+git commit -m "Added login page"
+git push origin main
+
+##…or push an existing repository from the command line
+git remote add origin https://github.com/Uday-Roy/JAVA_PRACTICE.git -> any repo link
+git branch -M main
+git push -u origin main
+
+
+
+
+
+
+
+
+
+
+# Most Important Git Commands (GitHub Workflow)
+
+---
+
+# 1. Initialize Git
+
+```bash id="git1"
+git init
+```
+
+Meaning:
+→ Start Git in your project folder.
+
+---
+
+# 2. Connect GitHub Repository
+
+```bash id="git2"
+git remote add origin https://github.com/USERNAME/REPOSITORY.git
+```
+
+Meaning:
+→ Connect local project with GitHub repository.
+
+---
+
+# 3. Check Repository Status
+
+```bash id="git3"
+git status
+```
+
+Meaning:
+→ Show changed, new, deleted files.
+
+---
+
+# 4. Add All Files
+
+```bash id="git4"
+git add .
+```
+
+Meaning:
+→ Select all files for upload/save.
+
+---
+
+# 5. Add Single File
+
+```bash id="git5"
+git add index.html
+```
+
+Meaning:
+→ Add only one specific file.
+
+---
+
+# 6. Save Changes (Commit)
+
+```bash id="git6"
+git commit -m "Added new files"
+```
+
+Meaning:
+→ Create project version/snapshot.
+
+---
+
+# 7. Upload to GitHub
+
+```bash id="git7"
+git push origin main
+```
+
+Meaning:
+→ Push/upload code to GitHub.
+
+---
+
+# 8. Download Repository
+
+```bash id="git8"
+git clone https://github.com/USERNAME/REPOSITORY.git
+```
+
+Meaning:
+→ Copy/download repository from GitHub.
+
+---
+
+# 9. Pull Latest Changes
+
+```bash id="git9"
+git pull origin main
+```
+
+Meaning:
+→ Download latest updates from GitHub.
+
+---
+
+# 10. Show Commit History
+
+```bash id="git10"
+git log
+```
+
+Meaning:
+→ Show all previous commits.
+
+---
+
+# 11. Create New Branch
+
+```bash id="git11"
+git branch feature
+```
+
+Meaning:
+→ Create another working branch.
+
+---
+
+# 12. Switch Branch
+
+```bash id="git12"
+git checkout feature
+```
+
+Meaning:
+→ Move to another branch.
+
+---
+
+# 13. Create + Switch Branch
+
+```bash id="git13"
+git checkout -b feature
+```
+
+Meaning:
+→ Create and open branch together.
+
+---
+
+# 14. Show All Branches
+
+```bash id="git14"
+git branch
+```
+
+Meaning:
+→ List all branches.
+
+---
+
+# 15. Delete Branch
+
+```bash id="git15"
+git branch -d feature
+```
+
+Meaning:
+→ Remove branch locally.
+
+---
+
+# 16. Rename Branch to Main
+
+```bash id="git16"
+git branch -M main
+```
+
+Meaning:
+→ Rename current branch to main.
+
+---
+
+# 17. Remove Git Tracking
+
+```bash id="git17"
+rm -rf .git
+```
+
+Meaning:
+→ Remove Git completely from project.
+
+---
+
+# 18. Check Connected Repository
+
+```bash id="git18"
+git remote -v
+```
+
+Meaning:
+→ Show connected GitHub URL.
+
+---
+
+# 19. See File Changes
+
+```bash id="git19"
+git diff
+```
+
+Meaning:
+→ Show code changes before commit.
+
+---
+
+# 20. Force Push
+
+```bash id="git20"
+git push -f origin main
+```
+
+Meaning:
+→ Replace GitHub code with local code forcefully.
+
+Use carefully ⚠️
+
+---
+
+# Most Common Daily Workflow
+
+## First Time Setup
+
+```bash id="daily1"
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/USERNAME/REPOSITORY.git
+git push -u origin main
+```
+
+---
+
+# Daily Future Upload Workflow
+
+```bash id="daily2"
+git add .
+git commit -m "Updated project"
+git push origin main
+```
+
+---
+
+# Team Workflow
+
+## Download friend updates
+
+```bash id="team1"
+git pull origin main
+```
+
+## Upload your updates
+
+```bash id="team2"
+git add .
+git commit -m "Worked on navbar"
+git push origin main
+```
+
+---
+
+# Quick Understanding
+
+```text
+Git = Version Control System
+GitHub = Online Cloud Storage for Git Projects
+
+git add      → Select files
+git commit   → Save version
+git push     → Upload to GitHub
+git pull     → Download updates
+```
