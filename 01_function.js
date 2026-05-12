@@ -41,6 +41,40 @@ function loginUserMessage(username = "sam") {
   return `${username} just logged in`;
 }
 
-console.log(loginUserMessage("Asus_Tuff_Gaming"));
-console.log(loginUserMessage("")); // just logged in
-console.log(loginUserMessage()); // undefined just logged in
+// console.log(loginUserMessage("Asus_Tuff_Gaming"));
+// console.log(loginUserMessage("")); // just logged in
+// console.log(loginUserMessage()); // undefined just logged in
+
+function calculateCartPrice(...num1) {
+  // rest or spread operator = ...variable
+  return num1;
+}
+
+//console.log(calculateCartPrice(100, 200, 500, 1000));
+
+const user = {
+  username: "uday",
+  price: 28000,
+};
+
+function handleObject(anyobject) {
+  console.log(
+    `username is ${anyobject.username} and purchasing price is ${anyobject.price}`,
+  );
+}
+
+//handleObject(user);
+handleObject({
+  // now direct object passing
+  username: "sam",
+  price: 399,
+});
+
+const myNewArray = [100, 299, 399, 499];
+
+function returnSecondValue(getAnyArray) {
+  return getAnyArray[1];
+}
+
+//console.log(returnSecondValue(myNewArray));
+console.log(returnSecondValue([100, 199, 299, 399]));
