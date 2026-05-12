@@ -1,0 +1,46 @@
+// function sayMyName() {
+//   console.log("U");
+//   console.log("D");
+//   console.log("A");
+//   console.log("Y");
+//   console.log("R");
+//   console.log("O");
+//   console.log("Y");
+// }
+
+// // reference = sayMyName
+// sayMyName(); // function execute...
+// function addTwoNumbers(number1, number2) {
+//   console.log(number1 + number2);
+// }
+
+// const result = addTwoNumbers(5, 10);
+// console.log(result);
+
+// function sum(num1, num2) {
+//   //   const result = num1 + num2;
+//   //   return result;
+//   return num1 + num2;
+// }
+
+// const total = sum(90, 10);
+// console.log(total);
+
+function loginUserMessage(username = "sam") {
+  // now it will not go to undefinedd it wiil add sam if data not pass into it
+  if (username === undefined) {
+    console.log("Please enter a username");
+    return;
+  }
+  // same work not using
+  if (!username) {
+    console.log("Please enter a username");
+    return;
+  }
+
+  return `${username} just logged in`;
+}
+
+console.log(loginUserMessage("Asus_Tuff_Gaming"));
+console.log(loginUserMessage("")); // just logged in
+console.log(loginUserMessage()); // undefined just logged in
