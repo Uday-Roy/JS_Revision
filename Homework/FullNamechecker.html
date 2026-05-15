@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function checkLetter() {
+
+            var nameInput = document.getElementById("nameInput");
+            if (nameInput.value.includes(" ")) {
+                var nameParts = nameInput.value.split(" ");
+                document.getElementById("firstNameInput").value = nameParts[0];
+                document.getElementById("middleNameInput").value = nameParts[1];
+                document.getElementById("lastNameInput").value = nameParts[2];
+            } else {
+                alert("Please enter your full name with spaces.");
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div style="text-align: center; margin-top: 50px; background-color: lightblue; padding: 20px; border-radius: 10px;">
+        <h1>Letter Checker</h1>
+        Enter your full name: <input type="text" id="nameInput"><br><br>
+        First_Name: <input type="text" id="firstNameInput"><br><br>
+        Middle_Name: <input type="text" id="middleNameInput"><br><br>
+        last_Name: <input type="text" id="lastNameInput"><br><br>
+        <!-- <p id="result"></p> -->
+    </div>
+</body>
+
+</html>

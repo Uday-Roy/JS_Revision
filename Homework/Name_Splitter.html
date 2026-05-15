@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Splitter</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #7a88ac;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        #clock,
+        #liveclock {
+            font-size: 22px;
+            font-weight: bold;
+            color: darkblue;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .count {
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+
+        function splitName() {
+
+            let fullName = document.getElementById("nameInput").value.trim();
+
+            // remove extra spaces
+            let nameParts = fullName.split(/\s+/);
+            // let nameParts = fullName.split();
+
+
+            // clear fields first
+            document.getElementById("firstNameInput").value = "";
+            document.getElementById("middleNameInput").value = "";
+            document.getElementById("lastNameInput").value = "";
+
+            // one name
+            if (nameParts.length === 1) {
+
+                document.getElementById("firstNameInput").value = nameParts[0];
+
+            }
+
+            // two names
+            else if (nameParts.length === 2) {
+
+                document.getElementById("firstNameInput").value = nameParts[0];
+                document.getElementById("lastNameInput").value = nameParts[1];
+
+            }
+
+            // three or more names
+            else if (nameParts.length >= 3) {
+
+                document.getElementById("firstNameInput").value = nameParts[0];
+                document.getElementById("middleNameInput").value = nameParts[1];
+
+                // remaining names become last name
+                document.getElementById("lastNameInput").value =
+                    nameParts.slice(2).join(" ");
+            }
+
+            // live letter count
+            document.getElementById("letterCount").innerText =
+                "Letter Count: " + fullName.replace(/\s/g, "").length;
+        }
+
+        // digital clock
+        function updateClock() {
+
+            let now = new Date();
+
+            let time = now.toLocaleTimeString();
+
+            //document.getElementById("clock").innerText = now;
+            document.getElementById("liveclock").innerText = time;
+        }
+
+        setInterval(updateClock, 1000);
+
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 style="background-color: rgb(245, 205, 152); border-radius: 10px;">Letter Checker</h1>
+
+        <div id="clock"></div>
+        <div id="liveclock"></div>
+
+
+        <label for="nameInput">Full Name:</label>
+        <input type="text" id="nameInput" placeholder="Enter Full Name" oninput="splitName()">
+
+        <div class="count" id="letterCount">
+            Letter Count: 0
+        </div>
+        <br>
+
+        <label for="firstNameInput">First Name:</label>
+        <input type="text" id="firstNameInput" placeholder="First Name">
+
+        <label for="middleNameInput">Middle Name:</label>
+        <input type="text" id="middleNameInput" placeholder="Middle Name">
+
+        <label for="lastNameInput">Last Name:</label>
+        <input type="text" id="lastNameInput" placeholder="Last Name">
+
+    </div>
+
+</body>
+
+</html>

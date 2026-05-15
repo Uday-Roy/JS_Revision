@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Uday_Finance fintech platform">
+    <meta name="keywords" content="finance, UPI, investment">
+    <meta name="author" content="Uday Roy">
+    <meta property="og:title" content="Uday_Finance">
+    <meta name="theme-color" content="#000000">
+    <title>Uday_Finance</title>
+
+    <!-- <title>Document</title> -->
+    <script>
+        function checkCookie() {
+            var dt = new Date();
+            dt.setTime(dt.getTime() + (7 * 24 * 60 * 60 * 1000));
+            var exp = "expires=" + dt.toUTCString();
+            //alert(exp);
+            //alert(dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds() + ":" + dt.getMilliseconds());
+            var cdata = document.cookie;
+            //alert(cdata);
+            // no cookie found coming after when i go to run html file again why fix it 
+            if (cdata.length == 0) {
+                alert("No cookie found, so welcome at first time");
+                document.cookie = "username=John Doe;pwd=vvit;" + exp + ";path=./";
+            }
+            else {
+                alert("Cookie found, so welcome back");
+            }
+
+
+            // if (cdata.length == 0) {
+            //     alert("No cookie found, so welcome at first time");
+            //     document.cookie = "username=John Doe;pwd=vvit;" + exp + ";path=./";
+            // }
+            // else {
+            //     alert("Cookie found, so welcome back");
+            // }
+
+            // }
+        }
+    </script>
+</head>
+
+<body onload="checkCookie();" style="background-color: lightpink; color: black; text-align: center">
+    <h1 style="text-align: center;">Cookie Demo</h1>
+    <div
+        style="width: 80%; margin: auto; text-align: left; font-size: 30px; background-color: rgb(134, 236, 226); padding: 20px; border-radius: 10px;">
+        <p>Welcome to the Cookie Demo!</p>
+        <p>A cookie is a small piece of data that is stored on the user's computer by the web browser while browsing a
+            website. It is used to remember information about the user, such as their preferences, login status, or
+            shopping
+            cart contents.</p>
+        <p>This is a simple example of how to use cookies in JavaScript.</p>
+        <p>When you visit this page for the first time, a cookie will be created to store your username and password.
+        </p>
+        <p>On subsequent visits, the script will check for the cookie and welcome you back if it exists.</p>
+
+    </div>
+</body>
+
+</html>
