@@ -5,31 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .design {
+            font-size: 24px;
+            font-weight: bold;
+            color: darkblue;
+        }
+    </style>
     <script>
         function checkLetter() {
 
+            let clock = document.getElementById("clock");
+            let currentTime = new Date();
+            let time = currentTime.toLocaleTimeString();
+            clock.innerText = time;
+            // CLOCK RUNNING EVERY SECOND
+            setInterval(checkLetter, 1000);
+
             var nameInput = document.getElementById("nameInput");
-            if (nameInput.value.includes(" ")) {
-                var nameParts = nameInput.value.split(" ");
+            var nameParts = nameInput.value.trim().split(/\s+/);
+
+            document.getElementById("firstNameInput").value = "";
+            document.getElementById("middleNameInput").value = "";
+            document.getElementById("lastNameInput").value = "";
+
+            if (nameParts.length == 1) {
+                document.getElementById("firstNameInput").value = nameParts[0];
+            }
+            else if (nameParts.length == 2) {
+                document.getElementById("firstNameInput").value = nameParts[0];
+                document.getElementById("lastNameInput").value = nameParts[1];
+            }
+
+            else if (nameParts.length >= 3) {
                 document.getElementById("firstNameInput").value = nameParts[0];
                 document.getElementById("middleNameInput").value = nameParts[1];
-                document.getElementById("lastNameInput").value = nameParts[2];
-            } else {
-                alert("Please enter your full name with spaces.");
+                document.getElementById("lastNameInput").value = nameParts.slice(2).join(" ");
             }
+
+            document.getElementById("counter").innerText = "Number of letters : " + nameInput.value.replace(/\s/g, "").length;
 
         }
     </script>
 </head>
 
-<body>
+<body onload="checkLetter()" style="background-color: rgb(207, 134, 134);">
+
     <div style="text-align: center; margin-top: 50px; background-color: lightblue; padding: 20px; border-radius: 10px;">
-        <h1>Letter Checker</h1>
-        Enter your full name: <input type="text" id="nameInput"><br><br>
-        First_Name: <input type="text" id="firstNameInput"><br><br>
-        Middle_Name: <input type="text" id="middleNameInput"><br><br>
-        last_Name: <input type="text" id="lastNameInput"><br><br>
-        <!-- <p id="result"></p> -->
+        <h1 style="background-color: bisque;">Letter Checker</h1><br>
+
+        <div id="clock" class="design"></div><br>
+        <p id="counter" style="font-size: 20px; font-weight: bold; "></p><br>
+
+        <label for="nameInput">Full Name:</label>
+        <input type="text" id="nameInput" oninput="checkLetter()" placeholder="Enter your full name"><br><br>
+
+        <label for="firstNameInput">First Name:</label>
+        <input type="text" id="firstNameInput" placeholder="Enter first name"><br><br>
+
+        <label for="middleNameInput">Middle Name:</label>
+        <input type="text" id="middleNameInput" placeholder="Enter middle name"><br><br>
+
+        <label for="lastNameInput">Last Name:</label>
+        <input type="text" id="lastNameInput" placeholder="Enter last name"><br><br>
+
     </div>
 </body>
 
