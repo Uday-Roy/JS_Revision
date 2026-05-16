@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie</title>
+    <script>
+        var cdata = document.cookie;
+        function setCookie() {
+            alert("Setting cookie");
+            const d = new Date();
+            var cname = "user=admin,password=demo,college=vvit";
+            var cvalue = "admin";
+            d.setTime(d.getTime() + (3 * 24 * 60 * 60 * 1000));
+            let expires = ";expires=" + d.toUTCString();
+            let finalvalue = cname + expires + ";path=/";
+            alert(finalvalue);
+            document.cookie = finalvalue;
+        }
+
+        function getCookie() {
+            var key = document.getElementById("key").value;
+            if (key.length == 0) {
+                alert("Please enter a key");
+                return;
+            }
+            else {
+                if (cdata.indexOf(key) == -1) {
+                    alert("Key not found in cookie");
+                    //return;
+                    var college = "Vidya Vihar Inst.";
+                    alert(college.substr(college.indexOf("Vihar"), "Vihar".length));
+                }
+            }
+        }
+    </script>
+
+
+
+</head>
+
+<body onload="setCookie();">
+    <h1>Cookie Demo </h1>
+    <p>Enter your key: <input type="text" id="key"></p>
+    <button onclick="getCookie()">Get Cookie value</button>
+</body>
+
+</html>
