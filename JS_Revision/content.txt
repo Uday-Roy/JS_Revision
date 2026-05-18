@@ -1,1 +1,3 @@
 Hii , Dear Good morning , Your breakfast is ready go and have it.
+
+AJAX (Asynchronous JavaScript and XML) is a web development technique that allows a webpage to communicate with a server in the background without requiring a full page refresh. By exchanging small amounts of data instead of entire pages, it creates a faster, more interactive experience similar to a desktop application.

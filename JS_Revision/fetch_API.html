@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Javascript : Fetch Api</title>
+</head>
+
+<body>
+    <h2>ES6 JS fetch Method</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <!-- <th>username</th> -->
+                <th>Email</th>
+                <!-- <th>phone</th>
+                <th>website</th>
+                <th>company</th>
+                <th>city</th>
+                <th>address</th> -->
+            </tr>
+        </thead>
+        <tbody id="data">
+
+        </tbody>
+    </table>
+    <script>
+        // fetch("content.txt")
+        //     .then((response) => {
+        //         // console.log(response.text())
+        //         return response.text();
+        //     })
+        //     .then((result) => {
+        //         console.log(result)
+        //     })
+
+        // *** small abovve code 
+
+        // fetch("content.txt")
+        //     .then(response => response.text())
+        //     .then(result => console.log(result))
+
+        // *** online api
+        fetch("https://jsonplaceholder.typicode.com/users")
+            // .then(response => response.text())
+            .then(response => response.json())
+            //  .then(result => console.log(result))
+            .then(result => {
+                // let tableData = "";
+                // if (result.length > 0) {
+                //     let tableData = "";
+                //     result.forEach(user => {
+                //         tableData += `<tr>
+                //     <td>${user.id}</td>
+                //     <td>${user.name}</td>
+                //     <td>${user.email}</td>
+                //     </tr>`;
+                //     });
+                //     document.getElementById("data").innerHTML = tableData;
+
+                // *** above code is same as below code but in short form */ practice
+                if (result.length > 0) {
+                    let tabledata = "";
+                    result.forEach(user => {
+                        tabledata += `<tr> <td>${user.id}</td> <td>${user.name}</td> <td>${user.email}</td> <tr>`
+
+                    })
+                    document.getElementById("data").innerHTML = tabledata
+                }
+            }
+            )
+            .catch(error => console.log("error : Data not found " + error))
+    </script>
+</body>
+
+</html>
