@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Event</title>
+</head>
+
+<body>
+    <!-- photo unorder list photo from online -->
+    <!-- all image should be  different and should be on and off
+     and should be in order -->
+    <div>
+        <ul id="images">
+            <li><img src="https://www.w3schools.com/js/pic_bulbon.gif" alt="Bulb Off" id="myImage" style="width:100px"
+                    onclick="alert('Good morning')"></li>
+            <li><img src="https://www.w3schools.com/js/pic_bulboff.gif" alt="Bulb On" id="myImage2" style="width:100px">
+            </li>
+            <li><img src="https://www.w3schools.com/js/pic_bulbon.gif" alt="Bulb Off" id="myImage3" style="width:100px">
+            </li>
+            <li><img src="https://www.w3schools.com/js/pic_bulboff.gif" alt="Bulb On" id="myImage4" style="width:100px">
+            </li>
+            <li><img src="https://www.w3schools.com/js/pic_bulbon.gif" alt="Bulb Off" id="myImage5" style="width:100px">
+            </li>
+            <li><img src="https://www.w3schools.com/js/pic_bulboff.gif" alt="Bulb On" id="myImage6" style="width:100px">
+            </li>
+            <!-- nature view image from online all image should be change and different-->
+            <li><img src="https://www.w3schools.com/w3images/lights" alt="image" id="myImage7" style="width:100px">
+            </li>
+
+
+        </ul>
+    </div>
+</body>
+<script>
+    // document.getElementById('myImage').onclick = function () { // this give less feature , addevent listener more scalable propagation
+    //     alert('Good morning');
+    // }
+
+    // attachEvent()
+    // jQuery - on
+    // type, timestamp, defaultPrevented
+    // target , toElement, srcElement, currentTarget
+    // clientY, clientX, screenY, screenX
+    // altKey, ctrlKey, shiftkey, keyCode
+    // document.getElementById('myImage1').addEventListener('click', function (e) {
+    //     // alert('Good morning : image1 clicked');
+    //     console.log(e);
+    // }, false); // *** capturing - true , bubbling - false...
+
+    // document.getElementById('images').addEventListener('click', function (e) {
+    //     console.log("Clicked inside the ul")
+    //     e.stopPropagation();
+    // })
+
+    document.querySelector('#images').addEventListener('click', function (e) {
+        // console.log(e);
+        // console.log(e.target);
+        // console.log(e.target.parentNode);
+        console.log(e.target.tagName);
+        if (e.target.taagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNodel;
+            removeIt.remove();
+        }
+        let removeIt = e.target.parentNode;
+        // removeIt.remove();
+
+    });
+    //  removeIt.parentNode.removeChild(removeIt);
+
+
+
+</script>
+
+</html>

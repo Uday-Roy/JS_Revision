@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2> Login form </h2>
+
+    <form id="loginForm">
+        <input type="text" id="name" placeholder="Enter name" required>
+        <input type="password" id="password" placeholder="password" required>
+        <button type="submit">Login</button>
+
+    </form>
+    <h3 id="result"></h3>
+
+
+    <script>
+        const form = document.getElementById("loginForm");
+
+        form.addEventListener("submit", function (e) {
+            // prevent page refresh
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const password = document.getElementById("password").value;
+
+            document.getElementById("result").innerHTML = "Welcome " + name;
+        });
+    </script>
+</body>
+
+</html>
