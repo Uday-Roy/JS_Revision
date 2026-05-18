@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance javascript -> Ajax </title>
+</head>
+
+<body>
+    <h2>ES6 JS Ajax Method</h2>
+    <p id="para"></p>
+    <button onclick="fetchData()">click me</button>
+
+    <script>
+        const fetchData = () => {
+            let ajaxHttp = new XMLHttpRequest();
+
+            ajaxHttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                    document.getElementById("para").innerHTML = this.responseText;
+                }
+                else if (this.readyState == 4 && this.status == 404) {
+                    document.getElementById("para").innerHTML = "Data not found";
+                }
+            }
+            console.log(ajaxHttp);
+            ajaxHttp.open("GET", "content.txt", true);
+            //  ajaxHttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
+            //  ajaxHttp.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+            ajaxHttp.open("GET", "https://api.github.com/users/Uday-Roy/repos", true)
+            ajaxHttp.send();
+        }
+    </script>
+</body>
+
+</html>
