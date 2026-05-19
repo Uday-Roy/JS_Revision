@@ -11,7 +11,7 @@
         document.cookie = "name2=Uday-Roy123456";
         let key = prompt("enter you key");
         let value = prompt("enter your value");
-        document.cookie = `${encodeURIComponent(key)} = ${encodeURIComponent(value)}`;
+        document.cookie = `${encodeURIComponent(key)} = ${encodeURIComponent(value)}`; // encodeURIComponent is used to encode the key and value to handle special characters 
 
         console.log(document.cookie);
     </script>
