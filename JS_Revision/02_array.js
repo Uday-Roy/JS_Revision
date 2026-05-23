@@ -18,7 +18,7 @@ const all_new_heros = [...marvel_heros, ...dc_heros];
 
 // *** flat method
 const another_array = [1, 2, 3, [4, 5], [6, 7, [8, 9]]];
-const real_another_arrya = another_array.flat(Infinity); // work likr spread operator , Returns a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+const real_another_arrya = another_array.flat(Infinity); // work like spread operator , Returns a new array with all sub-array elements concatenated into it recursively up to the specified depth.
 //console.log(real_another_arrya);
 
 // *** from and isArray method
