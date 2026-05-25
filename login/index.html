@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("txtUid").value;
+            var password = document.getElementById("txtPwd").value;
+
+            if (username === "" || password === "") {
+                alert("Please fill in both fields.");
+                return false;
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "login.php?txtUid=" + encodeURIComponent(username) + "&txtPwd=" + encodeURIComponent(password), false);
+            xhr.send();
+
+
+
+
+            return true;
+        }
+    </script>
+
+</head>
+
+<body>
+    <h2>Login</h2>
+    <form action="login.php" method="get" onsubmit="return validateForm();">
+        <label for="username">Username:</label>
+        <input type="text" id="txtUid" name="txtUid">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="txtPwd" name="txtPwd">
+        <br>
+        <button type="submit">Login</button>
+    </form>
+</body>
+
+</html>
