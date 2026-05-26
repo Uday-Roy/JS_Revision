@@ -1,0 +1,125 @@
+<!-- with ajax yaha pe ajax XMLHttpRequest ka use hoga -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Login</title>
+
+    <script>
+
+        // Function runs when Login button is clicked
+        function validateForm() {
+
+            // Get username from textbox
+            var username = document.getElementById("txtUid").value;
+
+            // Get password from textbox
+            var password = document.getElementById("txtPwd").value;
+
+
+            // Check if any field is empty
+            if (username == "" || password == "") {
+
+                alert("Please fill all fields");
+
+                // Stop function
+                return false;
+            }
+
+
+            // Create AJAX object
+            var xhr = new XMLHttpRequest();
+
+
+            /*
+            Open connection
+
+            Syntax:
+            xhr.open(Method, FileName?data, true/false)
+
+            GET = send data in URL
+            true = asynchronous request
+            */
+
+            xhr.open(
+                "GET",
+                "login.php?txtUid=" + username +
+                "&txtPwd=" + password,
+                true
+            );
+
+
+            /*
+            This function runs automatically
+            when server sends response
+            */
+
+            xhr.onreadystatechange = function () {
+
+                /*
+                readyState = 4 means completed
+                status = 200 means successful
+                */
+
+                if (xhr.readyState == 4 && xhr.status == 200) {
+
+                    // Show PHP result inside div
+                    document.getElementById("result").innerHTML =
+                        xhr.responseText;
+                }
+
+            };
+
+
+            // Send request to server
+            xhr.send();
+
+
+            /*
+            Stop normal page refresh
+            because AJAX works without reload
+            */
+            return false;
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h2>AJAX Login Form</h2>
+
+    <!-- onsubmit calls JavaScript function -->
+    <form onsubmit="return validateForm()">
+
+        <label>Username:</label>
+
+        <input type="text" id="txtUid" placeholder="Enter username">
+
+        <br><br>
+
+        <label>Password:</label>
+
+        <input type="password" id="txtPwd" placeholder="Enter password">
+
+        <br><br>
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+    <br>
+
+    <!-- Result from PHP will come here -->
+    <div id="result"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!-- without ajax , aha ajax ka use nhi hota h , -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <script>
+
+        // Function for checking form input
+        function validateForm() {
+
+            // Get username value from input box
+            var username = document.getElementById("txtUid").value;
+
+            // Get password value from input box
+            var password = document.getElementById("txtPwd").value;
+
+            // Check if any field is empty
+            if (username === "" || password === "") {
+
+                alert("Please fill in both fields");
+
+                // Stop form submission
+                return false;
+            }
+
+            // Allow form submission
+            return true;
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h2>Login Form</h2>
+
+    <!-- Form sends data to login.php -->
+    <form action="login.php" method="get" onsubmit="return validateForm()">
+
+        <label>Username:</label>
+
+        <input type="text" id="txtUid" name="txtUid" placeholder="Enter username">
+
+        <br><br>
+
+        <label>Password:</label>
+
+        <input type="password" id="txtPwd" name="txtPwd" placeholder="Enter password">
+
+        <br><br>
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+</body>
+
+</html>
