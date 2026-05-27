@@ -17,12 +17,15 @@
                 return false;
             }
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "login.php?txtUid=" + encodeURIComponent(username) + "&txtPwd=" + encodeURIComponent(password), false);
+            xhr.onreadystatechange = function () {
+                //if (xhr.readyState == 4 && xhr.status == 200)
+                document.getElementById("spnDisp").innerHTML = xhr.responseText;
+            };
+
+            var qs = "login.php?txtUid=" + encodeURIComponent(username) + "&txtPwd=" + password;
+            alert(qs);
+            xhr.open("GET", qs, true);
             xhr.send();
-
-
-
-
             return true;
         }
     </script>
@@ -31,15 +34,18 @@
 
 <body>
     <h2>Login</h2>
-    <form action="login.php" method="get" onsubmit="return validateForm();">
-        <label for="username">Username:</label>
-        <input type="text" id="txtUid" name="txtUid">
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="txtPwd" name="txtPwd">
-        <br>
-        <button type="submit">Login</button>
-    </form>
+
+    <label for="username">Username:</label>
+    <input type="text" id="txtUid" name="txtUid">
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="txtPwd" name="txtPwd">
+    <br>
+    <button type="button" onclick="validateForm()">Login</button>
+    <p>
+        <span id="spnDisp"></span>
+    </p>
+
 </body>
 
 </html>
